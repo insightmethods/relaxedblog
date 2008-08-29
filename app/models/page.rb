@@ -9,7 +9,7 @@ class Page < RelaxDB::Document
            :validator => lambda {|content| !title.blank? },
            :validation_msg => "Page can't be blank"
            
-  property :updated_at
+  property :published, :default => false
   
   has_many :comments
   belongs_to :author
