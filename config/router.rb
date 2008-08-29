@@ -36,8 +36,12 @@ Merb::Router.prepare do |r|
     name(:page)
     
   r.match("/:id/comment", :method => :post).
-    to(:controller => "pages", :action => "created_comment").
-    name(:page_comments)
+    to(:controller => "pages", :action => "create_comment").
+    name(:page_create_comment)
+    
+  r.match("/:id/comment", :method => :put).
+    to(:controller => "pages", :action => "update_comment").
+    name(:page_update_comment)
     
 
   # This is the default route for /:controller/:action/:id
