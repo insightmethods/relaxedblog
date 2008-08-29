@@ -50,6 +50,7 @@ Gem.path.unshift(Merb.root / "gems")
 # here.
 #
 dependency "merb_relaxdb"
+dependencies "merb-action-args", "merb-assets", "merb-jquery"
 dependencies "RedCloth", "merb_helpers"
 
 Merb::BootLoader.after_app_loads do
@@ -98,7 +99,7 @@ use_test :rspec
 # Merb can generate views for different template engines, choose your favourite as the default.
 
 use_template_engine :erb
-# use_template_engine :haml
+use_template_engine :haml
 
 
 #
