@@ -1,0 +1,5 @@
+.errors
+  %ul
+    = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
+
+= partial :form

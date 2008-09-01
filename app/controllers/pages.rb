@@ -1,8 +1,7 @@
 class Pages < Application
 
-  # ...and remember, everything returned from an action
-  # goes to the client...
-  def index
+  def index(page = nil)
+    @pages = Page.all
     render
   end
   

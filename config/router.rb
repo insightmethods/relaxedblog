@@ -24,8 +24,13 @@ Merb::Router.prepare do |r|
   # RESTful routes
   # r.resources :posts
   
-  r.match("/publish/:action").
-    to(:controller => "publish")
+  r.match("/admin/pages/:action/:id").
+    to(:controller => "publish").
+    name(:publish)
+    
+  r.match("/admin/pages/:action").
+    to(:controller => "publish").
+    name(:publish)
     
   r.match("/", :method => :get).
     to(:controller => "pages", :action => "index").

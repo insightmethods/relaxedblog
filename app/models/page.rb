@@ -6,7 +6,7 @@ class Page < RelaxDB::Document
            :validation_msg => "Title can't be blank"
             
   property :content, 
-           :validator => lambda {|content| !title.blank? },
+           :validator => lambda {|content| !content.blank? },
            :validation_msg => "Page can't be blank"
            
   property :published, :default => false

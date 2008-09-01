@@ -56,7 +56,6 @@ dependencies "RedCloth", "merb_helpers"
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
 
-  # dependency "magic_admin" # this gem uses the app's model classes
 end
 
 #
@@ -129,9 +128,10 @@ Merb::Config.use do |c|
   # 'memory' or 'memcached'.  You can of course use your favorite ORM 
   # instead: 'datamapper', 'sequel' or 'activerecord'.
   c[:session_store] = 'cookie'
+  
+  # Other configs
+  Merb::Config[:sass] = {:style => :compact}
 end
-
-
 # ==== Tune your inflector
 
 # To fine tune your inflector use the word, singular_word and plural_word

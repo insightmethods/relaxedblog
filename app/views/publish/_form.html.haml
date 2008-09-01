@@ -1,0 +1,4 @@
+= form_for @page, :action => url(:publish, :action => "create") do
+  = text_field :title, :label => "Title", :size => "50"
+  = text_area  :content, :label => "Content", :cols => "44", :rows => "10"
+  = submit "Save"
