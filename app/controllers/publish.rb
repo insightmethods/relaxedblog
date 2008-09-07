@@ -1,5 +1,11 @@
 class Publish < Application
   layout "admin"
+  
+  def pages
+    @pages = Page.all
+    render
+  end
+  
   def new
     @page = Page.new
     render

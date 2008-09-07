@@ -12,16 +12,16 @@
         #header
           %ul#header-menu
             %li 
-              = link_to "&#x2190; View Site", "/"
+              = link_to "&#x2190; View Blog", "/"
             %li 
-              = link_to "Pages"
+              = link_to "Pages", url(:publish, :action => "pages")
             %li 
               = link_to "My Info"
             %li.last 
               = link_to '&nbsp;'
             %div{ :style => "clear: both;" }/
         #left-sidebar
-          %h2 About Us
+          %h2 Change History
         #main-content
           = catch_content :for_layout
       
