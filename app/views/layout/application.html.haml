@@ -11,11 +11,22 @@
       #inside
         #header
           %ul#header-menu
-            %li Home
-            %li Archives
-            %li About
+            %li 
+              = link_to "Home"
+            %li 
+              = link_to "Archives"
+            %li 
+              = link_to "About"
+            %div{ :style => "clear: both;" }/
         #left-sidebar
-          Test
+          %h2 About Us
+          %p 
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          %h2 Archives
+          %ul
+            %li Jan
+            %li Feb
+            %li Mar
         #main-content
         
           = catch_content :for_layout

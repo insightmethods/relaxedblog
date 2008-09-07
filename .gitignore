@@ -1,1 +1,2 @@
 config/couchdb.yml
+public/stylesheets/*.css
