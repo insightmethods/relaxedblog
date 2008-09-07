@@ -1,5 +1,5 @@
 class Publish < Application
-  
+  layout "admin"
   def new
     @page = Page.new
     render

@@ -130,7 +130,7 @@ Merb::Config.use do |c|
   c[:session_store] = 'cookie'
   
   # Other configs
-  Merb::Config[:sass] = {:style => :compact}
+  Merb::Config[:sass] = {:style => :compressed}
 end
 # ==== Tune your inflector
 

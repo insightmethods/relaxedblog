@@ -1,0 +1,25 @@
+!!! Strict
+%html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      Blog
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
+    = css_include_tag 'master.css'
+    = jquery
+  %body
+    #page-wrap
+      #inside
+        #header
+          %ul#header-menu
+            %li Home
+            %li Archives
+            %li About
+        #left-sidebar
+          Test
+        #main-content
+        
+          = catch_content :for_layout
+          
+        %div{ :style => "clear: both;" }/
+        #footer
+      %div{ :style => "clear: both;" }/
