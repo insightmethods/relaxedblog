@@ -17,6 +17,8 @@
               = link_to "Archives"
             %li 
               = link_to "About"
+            %li.last 
+              = link_to '&nbsp;'
             %div{ :style => "clear: both;" }/
         #left-sidebar
           %h2 About Us
@@ -24,11 +26,11 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           %h2 Archives
           %ul
-            %li Jan
-            %li Feb
-            %li Mar
+            %li January
+            %li February
+            %li March
+            %li April
         #main-content
-        
           = catch_content :for_layout
           
         %div{ :style => "clear: both;" }/
