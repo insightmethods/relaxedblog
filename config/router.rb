@@ -35,9 +35,9 @@ Merb::Router.prepare do |r|
     to(:controller => "publish").
     name(:publish)
     
-  r.match("/", :method => :get).
+  r.match("/pages", :method => :get).
     to(:controller => "pages", :action => "index").
-    name(:home)
+    name(:pages)
     
   r.match("/:id", :method => :get).
     to(:controller => "pages", :action => "show").
@@ -51,12 +51,16 @@ Merb::Router.prepare do |r|
     to(:controller => "pages", :action => "update_comment").
     name(:page_update_comment)
     
+  r.match("/", :method => :get).
+    to(:controller => "pages", :action => "index").
+    name(:home)
+    
 
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
   # clients from calling your create or destroy actions with a GET
-  # r.default_routes
+  r.default_routes
   
   # Change this for your home page to be available at /
   # r.match('/').to(:controller => 'whatever', :action =>'index')

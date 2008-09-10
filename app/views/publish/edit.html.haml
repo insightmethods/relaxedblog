@@ -1,6 +1,2 @@
-- unless @page.errors.blank?
-  .errors
-    %ul
-      = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
-
+%h2 Edit Page
 = partial :form, :form_url => url(:publish, :action => "update", :id => @page.id)

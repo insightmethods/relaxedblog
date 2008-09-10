@@ -1,3 +1,9 @@
+- unless @page.errors.blank?
+  .errors
+    %p Please correct following errors
+    %ul
+      = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
+      
 = form_for @page, :action => form_url do
   = text_field :title, :label => "Title", :size => "50"
   ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"

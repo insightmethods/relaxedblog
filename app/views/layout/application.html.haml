@@ -7,6 +7,7 @@
     = css_include_tag 'master.css'
     = css_include_tag 'coderay.css'
     = jquery
+    %link{:rel=>"alternate", :type=>"application/rss+xml", :title=>"RSS", :href=>"#{url(:pages, :format => 'atom')}"}
   %body
     #page-wrap
       #inside

@@ -49,6 +49,7 @@ Gem.path.unshift(Merb.root / "gems")
 # another part of your configuration relies on libraries specified
 # here.
 #
+dependency "merb-builder"
 dependency "merb_relaxdb"
 dependencies "merb-action-args", "merb-assets", "merb-jquery"
 dependency "merb_helpers"
@@ -56,7 +57,6 @@ dependency "merb_coderay_helpers"
 
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
-
 end
 
 #
@@ -133,6 +133,9 @@ Merb::Config.use do |c|
   # Other configs
   # Merb::Config[:sass] = {:style => :compressed}
 end
+
+Merb.add_mime_type(:atom, nil,%w[application/atom+xml])
+
 # ==== Tune your inflector
 
 # To fine tune your inflector use the word, singular_word and plural_word
