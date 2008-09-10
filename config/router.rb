@@ -24,6 +24,9 @@ Merb::Router.prepare do |r|
   # RESTful routes
   # r.resources :posts
   
+  r.match("/admin").
+    redirect('/admin/pages/all')
+  
   r.match("/admin/pages/:action/:id").
     to(:controller => "publish").
     name(:publish)

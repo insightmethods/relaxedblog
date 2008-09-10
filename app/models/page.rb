@@ -20,7 +20,7 @@ class Page < RelaxDB::Document
   before_save :scan_and_cache_content
   
   def scan_and_cache_content
-    self.content_html = textilize_with_code(refs_syntax_highlighter(self.content.dup))
+    self.content_html = textilize_with_code(refs_syntax_highlighter(@content.dup)) if false
   end
   
 end
