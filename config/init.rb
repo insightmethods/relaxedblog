@@ -51,8 +51,8 @@ Gem.path.unshift(Merb.root / "gems")
 #
 dependency "merb_relaxdb"
 dependencies "merb-action-args", "merb-assets", "merb-jquery"
-dependency "coderay"
-dependencies "RedCloth", "merb_helpers"
+dependency "merb_helpers"
+dependency "merb_coderay_helpers"
 
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:

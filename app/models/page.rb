@@ -1,4 +1,5 @@
 class Page < RelaxDB::Document
+  include MerbCoderayTextile
   property :created_at
   property :updated_at
   property :title, 
@@ -16,11 +17,10 @@ class Page < RelaxDB::Document
   has_many :comments
   belongs_to :author
   
-  before_save :scan_content
+  before_save :scan_and_cache_content
   
-  def scan_content
-    self.content_html = self.content.scan(/(<code\:([a-z].+?)>(.+?)<\/code>)/m).each do |match|
-      text.gsub!(match[0],CodeRay.scan(match[2], match[1].to_sym).div(:css => :class))
-    end
+  def scan_and_cache_content
+    self.content_html = textilize_with_code(refs_syntax_highlighter(self.content.dup))
   end
+  
 end

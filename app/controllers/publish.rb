@@ -29,7 +29,7 @@ class Publish < Application
   def update(id, page)
     @page = RelaxDB.load(id)
     raise NotFound unless @page
-    raise @page.inspect
+    @page.set_attributes(page)
     if @page.save
       redirect url(:publish, :action => :all)
     else
