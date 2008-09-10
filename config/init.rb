@@ -51,6 +51,7 @@ Gem.path.unshift(Merb.root / "gems")
 #
 dependency "merb_relaxdb"
 dependencies "merb-action-args", "merb-assets", "merb-jquery"
+dependency "coderay"
 dependencies "RedCloth", "merb_helpers"
 
 Merb::BootLoader.after_app_loads do

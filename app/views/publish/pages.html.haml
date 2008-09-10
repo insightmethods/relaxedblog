@@ -1,5 +1,0 @@
-%h2 Pages
-%ul#page-list
-- for page in @pages
-  %li
-    = link_to page.title, url(:publish, :action => "edit", :id => page.id)

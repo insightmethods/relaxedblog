@@ -1,7 +1,7 @@
 class Publish < Application
   layout "admin"
   
-  def pages
+  def all
     @pages = Page.all
     render
   end
@@ -12,7 +12,7 @@ class Publish < Application
   end
   
   def edit(id)
-    @page = Page.one(id)
+    @page = RelaxDB.load(id)
     raise NotFound unless @page
     render
   end
@@ -20,27 +20,29 @@ class Publish < Application
   def create(page)
     @page = Page.new(page)
     if @page.save
-      redirect url(:publish, :action => :edit, :id => @page.id)
+      redirect url(:publish, :action => :all)
     else
       render :edit
     end
   end
   
   def update(id, page)
-    @page = Page.one(id)
+    @page = RelaxDB.load(id)
     raise NotFound unless @page
+    raise @page.inspect
     if @page.save
-      redirect url(:publish, :action => :edit, :id => @page.id)
+      redirect url(:publish, :action => :all)
     else
       render :edit
     end
   end
   
   def destroy(id)
-    @page = Page.one(id)
+    @page = RelaxDB.load(id)
     raise NotFound unless @page
-    @page.destroy
-    redirect url(:action => :new)
+    RelaxDB.db.delete("#{@page._id}?rev=#{@page._rev}")
+    # @page.destroy!
+    redirect url(:publish, :action => :new)
   end
   
 end
