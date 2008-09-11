@@ -1,5 +1,6 @@
 class Pages < Application
   before :setup, :only => [:show, :preview]
+  before :login_required, :only => [:preview]
   
   def index(page = nil)
     provides :html, :atom
