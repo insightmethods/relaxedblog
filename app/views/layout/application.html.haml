@@ -2,7 +2,8 @@
 %html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %title
-      Blog
+      = @page_title
+      InsightMehtods - Blog
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
     = css_include_tag 'master.css'
     = css_include_tag 'coderay.css'
@@ -25,8 +26,8 @@
         #left-sidebar
           %h2 InsightMethods
           %p 
-            Is a california based company. That kicking ass of traditional enterprisy market research companies
-          %h2 Links
+            \... is a california based company. That kicking ass of traditional enterprisy market research companies
+          %h2 Products
           %p
             %a{:href => 'http://forge.insightmethods.com'} Forge
           %h2 Archives

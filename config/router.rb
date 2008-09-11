@@ -35,7 +35,7 @@ Merb::Router.prepare do |r|
     to(:controller => "publish").
     name(:publish)
     
-  r.match("/pages.:format", :method => :get).
+  r.match("/entries.:format", :method => :get).
     to(:controller => "pages", :action => "index").
     name(:pages)
     

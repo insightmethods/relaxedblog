@@ -3,12 +3,16 @@
   padding: 0
 
 body
-  font-size: 69%
+  font-size: 72%
   background: #fff
 
 p,  li
   font: 1.2em/1.8em Tahoma, sans-serif
-  margin-bottom: 10px
+  margin-bottom: 5px
+  
+p.page-meta
+  margin-bottom: 0
+  color: #999
 
 h1
   font: 2.0em Tahoma, sans-serif
@@ -16,7 +20,7 @@ h1
 
 h2
   font: 1.8em Tahoma, sans-serif
-  color: rgb(204, 102, 0)
+  color: #FBB36B
   margin-bottom: 10px
 
 ul
@@ -62,9 +66,12 @@ img
   
 .page-content
   margin-bottom: 20px
+
+h2.page-title
+  font-size: 270%
   
 .page-title a
-  color: rgb(204, 102, 0)
+  color: #FF7900
   text-decoration: none
   
 ul#header-menu
@@ -78,12 +85,17 @@ ul#header-menu
       display: block
       padding: 5px
       color: black
-      border-bottom: 3px black solid
+      border-bottom: 3px #927B51 solid
+      :-moz-border-radius-topright 1.1em
+      :-webkit-border-top-right-radius 1em
+      :-moz-border-radius-topleft 1.1em
+      :-webkit-border-top-left-radius 1em
       text-decoration: none
       &:hover
-        border-bottom-color: #999
+        background: #BCDD5A
+        
   li.last
     width: 70%
     a:hover
-      border-bottom-color: black
+      background: none
 
