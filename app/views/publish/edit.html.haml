@@ -1,2 +1,3 @@
 %h2 Edit Page
-= partial :form, :form_url => url(:publish, :action => "update", :id => @page.id), :current_author => @page.author
+= partial :form, :form_url => url(:publish, :action => "update", :id => @page.id), |
+                 :current_author => @page.author |

@@ -6,5 +6,9 @@ class Comment < RelaxDB::Document
            :validator => lambda {|content| !title.blank? },
            :validation_msg => "Comment can't be blank"
            
+  property :published, :default => false
+  property :publish_date, :default => nil
+           
   belongs_to :author
+  belongs_to :page
 end

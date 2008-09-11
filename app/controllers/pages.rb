@@ -1,5 +1,5 @@
 class Pages < Application
-  before :setup, :only => [:show, :preview]
+  before :setup, :only => [:show, :preview, :create_comment]
   before :login_required, :only => [:preview]
   
   def index(page = nil)
@@ -17,6 +17,15 @@ class Pages < Application
   
   def preview
     render :show
+  end
+  
+  def create_comment(id, comment)
+    @comment.set_attributes(comment.merge(:page => @page))
+    if @comment.save
+      render :show
+    else
+      redirect url(:page, :id => @page.id)
+    end
   end
   
   private

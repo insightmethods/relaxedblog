@@ -37,6 +37,7 @@ class Publish < Application
   
   def publish_toggle
     @page.published = !@page.published
+    @page.publish_date = Time.now if @page.published
     @page.save
     redirect url(:publish, :action => :all)
   end
