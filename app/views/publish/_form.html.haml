@@ -7,7 +7,7 @@
 = form_for @page, :action => form_url do
   = text_field :title, :label => "Title", :size => "50"
   = select  :author, :collection => User.all.map { |u| [u.author.id, u.author.name] }, |
-            :label => "Author", :selected => @page.author.id |
+            :label => "Author", :selected => current_author.id |
   ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
   = submit "Save"
   or

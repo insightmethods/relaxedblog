@@ -5,11 +5,11 @@ class Sessions < Application
     render
   end
 
-  def create
-    self.current_user = User.authenticate(params[:email], params[:password])
+  def create(username, password)
+    self.current_user = User.authenticate(username, password)
     if logged_in?
-      redirect_back_or_default('/')
-    elsif params[:email] && params[:password]
+      redirect_back_or_default('/admin')
+    elsif username && password
       flash(:error, "Email and password provided do not match.<br/>#{"(You entered '#{params[:email]}' as email)" unless params[:email].blank?}" )
       render :new
     else
@@ -18,11 +18,9 @@ class Sessions < Application
   end
 
   def destroy
-    self.current_user.forget_me if logged_in?
-    cookies.delete :auth_token
+    current_user.forget_me if logged_in?
     session.delete
-    # redirect_back_or_default('/')
-    redirect '/forge-user-survey.html'
+    redirect_back_or_default('/')
   end
   
 end

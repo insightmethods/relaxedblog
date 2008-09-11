@@ -6,12 +6,13 @@ class User < RelaxDB::Document
   
   belongs_to :author
   
+  before_save :encrypt_password
   before_save :create_author
   
   def self.authenticate(username, password)
-    # u = self.find_active_with_conditions(:email => email)
-    #     u && u.authenticated?(password) ? u : nil
-    nil
+    User.all.sorted_by(:username).find do |u|
+      u.username == username && u.authenticated?(password)
+    end
   end
   
   def self.encrypt(password, salt)
@@ -19,12 +20,16 @@ class User < RelaxDB::Document
   end
   
   def self.find_by_id(id)
-    user = (RelaxDB.load(session[:current_user]) rescue nil)
+    user = (RelaxDB.load(id) rescue nil)
     user if user && user.is_a?(User)
   end
   
   def encrypt(password)
     self.class.encrypt(password, salt)
+  end
+  
+  def authenticated?(password)
+    crypted_password == encrypt(password)
   end
   
   def encrypt_password
@@ -35,7 +40,9 @@ class User < RelaxDB::Document
   
   def create_author
     if new_record? && author.nil?
-      self.author = Author.new({:name => name, :email => email})
+      a = Author.new({:name => name, :email => email})
+      a.save
+      self.author = a
     end
   end
 end

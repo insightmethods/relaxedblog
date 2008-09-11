@@ -1,2 +1,2 @@
 %h2 New Page
-= partial :form, :form_url => url(:publish, :action => "create")
+= partial :form, :form_url => url(:publish, :action => "create"), :current_author => current_user.author
