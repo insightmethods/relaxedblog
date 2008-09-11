@@ -1,3 +1,4 @@
 .DS_Store
 config/couchdb.yml
-public/stylesheets/*.css
+public/stylesheets/master.css
+public/stylesheets/admin.css
