@@ -51,6 +51,10 @@ Merb::Router.prepare do |r|
     to(:controller => "pages", :action => "index").
     name(:pages)
     
+  r.match("/preview/:id", :method => :get).
+    to(:controller => "pages", :action => "preview").
+    name(:page_preview)
+    
   r.match("/:id", :method => :get).
     to(:controller => "pages", :action => "show").
     name(:page)

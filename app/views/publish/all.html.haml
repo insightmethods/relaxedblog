@@ -6,7 +6,7 @@
   - for page in @pages
     %li
       %h3
-        = link_to page.title, url(:page, :id => page.id)
+        = link_to page.title, url(:page_preview, :id => page.id)
         %small
           \- by
           = page.author.name

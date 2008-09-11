@@ -17,8 +17,12 @@
               = link_to "Pages", url(:publish, :action => "all")
             %li 
               = link_to "My Info"
-            %li.last 
-              = link_to '&nbsp;'
+              %li.last
+                - if logged_in?
+                  = link_to 'logout', url(:logout)
+                - else
+                  = link_to '&nbsp;', '#'
+                  
             %div{ :style => "clear: both;" }/
         #left-sidebar
           %h2 Change History

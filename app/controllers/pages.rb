@@ -1,5 +1,5 @@
 class Pages < Application
-  before :setup, :only => [:show]
+  before :setup, :only => [:show, :preview]
   
   def index(page = nil)
     provides :html, :atom
@@ -15,7 +15,7 @@ class Pages < Application
   end
   
   def preview
-    render :action => "show"
+    render :show
   end
   
   private

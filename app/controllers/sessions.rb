@@ -18,8 +18,7 @@ class Sessions < Application
   end
 
   def destroy
-    current_user.forget_me if logged_in?
-    session.delete
+    self.current_user = nil
     redirect_back_or_default('/')
   end
   
