@@ -3,12 +3,19 @@ class Pages < Application
   
   def index(page = nil)
     provides :html, :atom
-    @pages = Page.all.sorted_by(:created_at).reverse
+    @pages = Page.all.sorted_by(:created_at).reverse.select do |page| 
+      !!page.published 
+    end
     render 
   end
   
   def show
+    raise NotFound unless @page.published
     render
+  end
+  
+  def preview
+    render :action => "show"
   end
   
   private

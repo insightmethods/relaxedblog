@@ -3,7 +3,16 @@
   = link_to 'New page', url(:publish, :action => "new")
 %br
 %ul#page-list
-- for page in @pages
-  %li
-    %span= link_to page.title, url(:publish, :action => "edit", :id => page.id)
-    %span= link_to 'delete', url(:publish, :action => "destroy", :id => page.id)
+  - for page in @pages
+    %li
+      %h3
+        = link_to page.title, url(:page, :id => page.id)
+        %small
+          \- by
+          = page.author.name
+      .page-actions
+        %span= link_to 'edit', url(:publish, :action => "edit", :id => page.id)
+        - if page.published
+          %span= link_to 'unpublish', url(:publish, :action => "publish_toggle", :id => page.id)
+        - else
+          %span= link_to 'publish', url(:publish, :action => "publish_toggle", :id => page.id)

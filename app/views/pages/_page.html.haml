@@ -1,12 +1,15 @@
-%p.page-meta
-  = page.created_at.strftime('%B %d,')
-  by 
-  - if page.author
-    = page.author.name
-%h2.page-title
-  = link_to page.title, url(:page, :id => page.id)
-.page-content
-  ~ page.content_html
+- if true
+  %p.page-meta
+    = page.created_at.strftime('%B %d,')
+    by 
+    - if page.author
+      = page.author.name
+  %h2.page-title
+    = link_to page.title, url(:page, :id => page.id)
+    %small
+      = "NOT PUBLISHED" unless page.published
+  .page-content
+    ~ page.content_html
   
-.page-comments
+  .page-comments
   

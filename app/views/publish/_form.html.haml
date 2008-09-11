@@ -11,3 +11,5 @@
   ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
   -# raise Author.all.map { |a| a.name }.inspect
   = submit "Save"
+  or
+  = link_to 'Cancel', url(:publish, :action => :all)

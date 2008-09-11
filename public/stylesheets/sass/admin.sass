@@ -17,8 +17,18 @@ h1
 
 h2
   font: 1.8em Tahoma, sans-serif
-  color: green
+  color: #585947
   margin-bottom: 10px
+  
+h3
+  font: 1.5em Tahoma, sans-serif
+  color: #585947
+  margin-bottom: 7px
+    
+h4
+  font: 1em Tahoma, sans-serif
+  color: #585947
+  margin-bottom: 5px
 
 ul
   margin-left: 25px
@@ -72,14 +82,28 @@ ul#header-menu
       display: block
       padding: 5px
       color: black
-      border-bottom: 3px black solid
+      border-bottom: 3px #84596B solid
+      :-moz-border-radius-topright 1.1em
+      :-webkit-border-top-right-radius 1em
+      :-moz-border-radius-topleft 1.1em
+      :-webkit-border-top-left-radius 1em
       text-decoration: none
       &:hover
-        border-bottom-color: #999
+        background: #FCB3D0
+
   li.last
     width: 70%
     a:hover
-      border-bottom-color: black
+      background: none
+      
+ul#page-list
+  margin-left: 0px
+  li
+    list-style-type: none
+    border-bottom: 1px solid #ccc
+    a
+      padding: 5px
+      color: #FCB3D0
       
 #main-content form
   font: 125% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif

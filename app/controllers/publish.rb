@@ -34,8 +34,9 @@ class Publish < Application
     end
   end
   
-  def destroy
-    RelaxDB.db.delete("#{@page._id}?rev=#{@page._rev}")
+  def publish_toggle
+    @page.published = !@page.published
+    @page.save
     redirect url(:publish, :action => :all)
   end
   
