@@ -12,6 +12,8 @@ class Pages < Application
   
   def show
     raise NotFound unless @page.published
+    @comment = Comment.new
+    @author = Author.new
     render
   end
   
@@ -19,19 +21,20 @@ class Pages < Application
     render :show
   end
   
-  def create_comment(id, comment)
-    @comment.set_attributes(comment.merge(:page => @page))
+  def create_comment(id, comment, author)
+    @author = Author.new(author)
+    @comment = Comment.new(comment.merge(:page => @page, :author => @author))
     if @comment.save
-      render :show
-    else
+      @author.save
       redirect url(:page, :id => @page.id)
+    else
+      render :show
     end
   end
   
   private
     def setup
       @page = RelaxDB.load(params[:id])
-      @comment = Comment.new
       @page_title = "#{@page.title} :: "
     end
 end

@@ -4,5 +4,6 @@ class Author < RelaxDB::Document
   
   property :name
   property :email
+  property :url
   
 end

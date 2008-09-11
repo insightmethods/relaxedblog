@@ -1,9 +1,31 @@
 = partial :page, :with => @page
 
 .page-comments
-- @page.comments.each do |comment|
-  = comment.content
-
-= form_for @comment, :action => url(:create_comment) do
-  ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
-  = submit "Save"
+  - if @page.comments.size > 0
+    %h2 Comments
+  - else
+    %h2 First Comment
+    
+  - @page.comments.each do |comment|
+    %p
+      = comment.content
+      .comment-meta
+        = comment.created_at.strftime('%B %d,')
+        by 
+        - if comment.author
+          = comment.author.name
+        
+  - unless @comment.errors.blank? && @author.errors.blank?
+    .errors
+      %p Please correct following errors
+      %ul
+        = "<li>#{@comment.errors.map {|k,v| v }.join('</li><li>')}</li>"
+        = "<li>#{@author.errors.map {|k,v| v }.join('</li><li>')}</li>"
+          
+  = form_for @comment, :action => url(:create_comment, :id => @page.id) do
+    - fields_for @author do
+      = text_field :name, :label => 'Name'
+      = text_field :email, :label => 'Email Address'
+      = text_field :url, :label => 'Web Address'
+    ~ text_area  :content, :label => "Content", :cols => "44", :rows => "10"
+    = submit "Save"
