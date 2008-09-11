@@ -14,7 +14,7 @@
         #header
           %ul#header-menu
             %li 
-              = link_to "Home"
+              = link_to "Home", url(:home)
             %li 
               = link_to "Archives"
             %li 
@@ -23,9 +23,12 @@
               = link_to '&nbsp;'
             %div{ :style => "clear: both;" }/
         #left-sidebar
-          %h2 About Us
+          %h2 InsightMethods
           %p 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Is a california based company. That kicking ass of traditional enterprisy market research companies
+          %h2 Links
+          %p
+            %a{:href => 'http://forge.insightmethods.com'} Forge
           %h2 Archives
           %ul
             %li January

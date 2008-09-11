@@ -6,4 +6,9 @@ class Pages < Application
     render 
   end
   
+  def show(id)
+    @page = RelaxDB.load(id)
+    render
+  end
+  
 end

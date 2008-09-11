@@ -4,7 +4,8 @@ xml.feed(:xmlns => "http://www.w3.org/2005/Atom") do |feed|
   feed.link('http://blog.insightmethods.com/')
   @pages.each do |page|
     feed.entry do |entry|
-      entry.id(page.id)
+      uuid = 'urn:uuid:' + page.id
+      entry.id(uuid)
       url = absolute_url(:page, :id => page.id)
       entry.link(url)
       entry.title(page.title)

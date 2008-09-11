@@ -26,7 +26,7 @@ class Publish < Application
   end
   
   def update(page)
-    @page.set_attributes(page)
+    @page.set_attributes(page.merge( {:author => RelaxDB.load(page[:author])} ))
     if @page.save
       redirect url(:publish, :action => :all)
     else
