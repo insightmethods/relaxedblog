@@ -1,1 +1,9 @@
 = partial :page, :with => @page
+
+.page-comments
+- @page.comments.each do |comment|
+  = comment.content
+
+= form_for @comment, :action => url(:create_comment) do
+  ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
+  = submit "Save"

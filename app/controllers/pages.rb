@@ -22,6 +22,7 @@ class Pages < Application
   private
     def setup
       @page = RelaxDB.load(params[:id])
+      @comment = Comment.new
       @page_title = "#{@page.title} :: "
     end
 end

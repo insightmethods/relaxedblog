@@ -61,11 +61,11 @@ Merb::Router.prepare do |r|
     
   r.match("/:id/comment", :method => :post).
     to(:controller => "pages", :action => "create_comment").
-    name(:page_create_comment)
+    name(:create_comment)
     
-  r.match("/:id/comment", :method => :put).
-    to(:controller => "pages", :action => "update_comment").
-    name(:page_update_comment)
+  # r.match("/:id/comment", :method => :put).
+  #   to(:controller => "pages", :action => "update_comment").
+  #   name(:page_update_comment)
     
   r.match("/", :method => :get).
     to(:controller => "pages", :action => "index").
