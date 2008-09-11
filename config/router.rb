@@ -24,6 +24,18 @@ Merb::Router.prepare do |r|
   # RESTful routes
   # r.resources :posts
   
+  r.match('/login', :method => :get).
+    to(:controller => "sessions", :action => "new").
+    name(:login)
+    
+  r.match('/login', :method => :post).
+    to(:controller => "sessions", :action => "create").
+    name(:login)
+    
+  r.match('/logout').
+    to(:controller => "sessions", :action => "destroy").
+    name(:logout)
+  
   r.match("/admin").
     redirect('/admin/pages/all')
   
