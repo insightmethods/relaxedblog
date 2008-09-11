@@ -8,7 +8,7 @@ class Sessions < Application
   def create(username, password)
     self.current_user = User.authenticate(username, password)
     if logged_in?
-      redirect_back_or_default('/admin')
+      redirect url(:publish, :action => "all")
     elsif username && password
       flash(:error, "Email and password provided do not match.<br/>#{"(You entered '#{params[:email]}' as email)" unless params[:email].blank?}" )
       render :new
@@ -19,7 +19,7 @@ class Sessions < Application
 
   def destroy
     self.current_user = nil
-    redirect_back_or_default('/')
+    redirect '/'
   end
   
 end
