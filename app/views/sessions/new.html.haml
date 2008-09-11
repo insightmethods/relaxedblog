@@ -1,10 +1,9 @@
-.loginForm
+.login-form
   = show_flash(:error)
   = show_flash(:confirmation)
-  %div
-    = form :action => url(:login) do
-      = text_field :name => "username", :size => "30", :label => "Username"
-      = password_field :name => "password", :label => "Password"
-      = submit "        Login        "
-      or
-      = link_to "Cancel", url(:home)
+  = form :action => url(:login) do
+    = text_field :name => "username", :size => "30", :label => "Username"
+    = password_field :name => "password", :label => "Password"
+    = submit "Login"
+    or
+    = link_to "Cancel", url(:home)

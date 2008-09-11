@@ -9,8 +9,9 @@ class User < RelaxDB::Document
   before_save :create_author
   
   def self.authenticate(username, password)
-    u = self.find_active_with_conditions(:email => email)
-    u && u.authenticated?(password) ? u : nil
+    # u = self.find_active_with_conditions(:email => email)
+    #     u && u.authenticated?(password) ? u : nil
+    nil
   end
   
   def self.encrypt(password, salt)

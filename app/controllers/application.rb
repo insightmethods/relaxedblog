@@ -1,6 +1,11 @@
 class Application < Merb::Controller
+  
   def current_user
     @current_user ||= User.find_by_id(session[:current_user])
+  end
+  
+  def current_user=(new_user)
+    session[:current_user] = (!new_user || !new_user.kind_of?(User)) ? nil : new_user.id
   end
   
   def login_required
