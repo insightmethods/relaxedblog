@@ -51,6 +51,10 @@ Merb::Router.prepare do |r|
     to(:controller => "pages", :action => "index").
     name(:pages)
     
+  r.match("/entries.:format/:tag", :method => :get).
+    to(:controller => "pages", :action => "index").
+    name(:pages)
+    
   r.match("/preview/:id", :method => :get).
     to(:controller => "pages", :action => "preview").
     name(:page_preview)
@@ -71,6 +75,9 @@ Merb::Router.prepare do |r|
     to(:controller => "pages", :action => "index").
     name(:home)
     
+  r.match("/all/:tag", :method => :get).
+    to(:controller => "pages", :action => "index").
+    name(:tag)
 
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based

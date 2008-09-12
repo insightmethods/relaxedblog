@@ -6,10 +6,11 @@
         = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
       
   = form_for @page, :action => form_url do
-    = text_field :title, :label => "Title", :size => "50"
+    = text_field :title, :label => "Title"
     = select  :author_id, :collection => User.all.map { |u| [u.author.id, u.author.name] }, |
               :label => "Author", :selected => current_author.id |
-    ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
+    = text_field :tags, :label => 'Tags <small>(Separated by space)</small>'
+    ~ text_area  :content, :label => "Content", :rows => "30"
     = submit "Save"
     or
     = link_to 'Cancel', url(:publish, :action => :all)
