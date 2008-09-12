@@ -3,7 +3,7 @@ xml.feed(:xmlns => "http://www.w3.org/2005/Atom") do |feed|
   feed.title('InsightMethods')
   feed.id("http://blog.insightmethods.com/")
   feed.updated(@pages.first.created_at.iso8601)
-  feed.link(:href => 'http://blog.insightmethods.com/', :rel => "self")
+  feed.link(:href => 'http://blog.insightmethods.com/entries.atom', :rel => "self")
   @pages.each do |page|
     feed.entry do |entry|
       uuid = 'urn:uuid:' + page.id
