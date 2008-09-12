@@ -21,8 +21,8 @@ class Page < RelaxDB::Document
   
   def scan_and_cache_content
     if @content
-      formatted_code_if_any = refs_syntax_highlighter(@content)
-      self.content_html = textilize_with_code(formatted_code_if_any || @content) 
+      formatted_code_if_any = refs_syntax_highlighter(@content.dup)
+      self.content_html = textilize_with_code(formatted_code_if_any || @content.dup) 
     end
     true
   end
