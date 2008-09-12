@@ -16,3 +16,5 @@
           %span= link_to 'unpublish', url(:publish, :action => "publish_toggle", :id => page.id)
         - else
           %span= link_to 'publish', url(:publish, :action => "publish_toggle", :id => page.id)
+        
+        %span= link_to 'delete', url(:publish, :action => "destroy", :id => page.id)

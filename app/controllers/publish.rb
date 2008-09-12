@@ -42,6 +42,11 @@ class Publish < Application
     redirect url(:publish, :action => :all)
   end
   
+  def destroy(id)
+    RelaxDB.db.delete("#{@page._id}?rev=#{@page._rev}")
+    redirect url(:publish, :action => :all)
+  end
+  
   private
     def setup
       @page = RelaxDB.load(params[:id])
