@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version=>"1.0" 
 xml.feed(:xmlns => "http://www.w3.org/2005/Atom") do |feed|
   feed.title('InsightMethods')
-  feed.id("http://blog.insightmethods.com")
+  feed.id("http://blog.insightmethods.com/")
   feed.updated(@pages.first.created_at.iso8601)
   feed.link(:href => 'http://blog.insightmethods.com/', :rel => "self")
   @pages.each do |page|
