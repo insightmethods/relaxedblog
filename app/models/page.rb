@@ -14,7 +14,7 @@ class Page < RelaxDB::Document
   property :published, :default => false
   property :publish_date, :default => nil
   
-  has_many :comments
+  has_many :comments, :class => "Comment"
   belongs_to :author
   
   before_save :scan_and_cache_content

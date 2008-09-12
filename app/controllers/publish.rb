@@ -1,6 +1,6 @@
 class Publish < Application
   layout "admin"
-  before :login_required
+  # before :login_required
   before :setup, :exclude => [:all, :new, :create]
   
   def all

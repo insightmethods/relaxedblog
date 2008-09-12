@@ -1,14 +1,15 @@
-- unless @page.errors.blank?
-  .errors
-    %p Please correct following errors
-    %ul
-      = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
+.page-form
+  - unless @page.errors.blank?
+    .errors
+      %p Please correct following errors
+      %ul
+        = "<li>#{@page.errors.map {|k,v| v }.join('</li><li>')}</li>"
       
-= form_for @page, :action => form_url do
-  = text_field :title, :label => "Title", :size => "50"
-  = select  :author_id, :collection => User.all.map { |u| [u.author.id, u.author.name] }, |
-            :label => "Author", :selected => current_author.id |
-  ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
-  = submit "Save"
-  or
-  = link_to 'Cancel', url(:publish, :action => :all)
+  = form_for @page, :action => form_url do
+    = text_field :title, :label => "Title", :size => "50"
+    = select  :author_id, :collection => User.all.map { |u| [u.author.id, u.author.name] }, |
+              :label => "Author", :selected => current_author.id |
+    ~ text_area  :content, :label => "Content", :cols => "44", :rows => "30"
+    = submit "Save"
+    or
+    = link_to 'Cancel', url(:publish, :action => :all)

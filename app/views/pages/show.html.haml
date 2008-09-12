@@ -6,21 +6,21 @@
   - else
     %h2 First Comment
     
-  - @page.comments.each do |comment|
-    %p
+  - @comments.each do |comment|
+    .comment
+      .comment-meta 
+        = comment.author.name || "Anonymous Coward"
+        %span.date-time
+          = time_lost_in_sensible_words(comment.created_at)
       = comment.content
-      .comment-meta
-        = comment.created_at.strftime('%B %d,')
-        by 
-        - if comment.author
-          = comment.author.name
         
-  - unless @comment.errors.blank? && @author.errors.blank?
+        
+  - if (@comment && !@comment.errors.blank?) || (@author && !@author.errors.blank?)
     .errors
       %p Please correct following errors
       %ul
-        = "<li>#{@comment.errors.map {|k,v| v }.join('</li><li>')}</li>"
-        = "<li>#{@author.errors.map {|k,v| v }.join('</li><li>')}</li>"
+        = "<li>#{@comment.errors.map {|k,v| v }.join('</li><li>')}</li>" if (@comment && !@comment.errors.blank?)
+        = "<li>#{@author.errors.map {|k,v| v }.join('</li><li>')}</li>" if (@author && !@author.errors.blank?)
           
   = form_for @comment, :action => url(:create_comment, :id => @page.id) do
     - fields_for @author do

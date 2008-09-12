@@ -12,8 +12,7 @@ class Pages < Application
   
   def show
     raise NotFound unless @page.published
-    @comment = Comment.new
-    @author = Author.new
+    @comments = @page.comments.to_a.sort_by { |comment| comment.created_at }
     render
   end
   
@@ -22,10 +21,10 @@ class Pages < Application
   end
   
   def create_comment(id, comment, author)
-    @author = Author.new(author)
-    @comment = Comment.new(comment.merge(:page => @page, :author => @author))
-    if @comment.save
-      @author.save
+    @author.set_attributes(author)
+    @comment.set_attributes(comment.merge(:page => @page, :author => @author))
+    if @author.save && @comment.save
+      session[:author] = @author
       redirect url(:page, :id => @page.id)
     else
       render :show
@@ -35,6 +34,9 @@ class Pages < Application
   private
     def setup
       @page = RelaxDB.load(params[:id])
+      @comment = Comment.new
+      @comments = []
+      @author =  session[:author] || Author.new
       @page_title = "#{@page.title} :: "
     end
 end

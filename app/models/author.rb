@@ -6,4 +6,7 @@ class Author < RelaxDB::Document
   property :email
   property :url
   
+  def name
+    @name.blank? ? nil : @name
+  end
 end
