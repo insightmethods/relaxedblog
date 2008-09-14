@@ -10,9 +10,8 @@ class User < RelaxDB::Document
   before_save :create_author
   
   def self.authenticate(username, password)
-    User.all.sorted_by(:username).find do |u|
-      u.username == username && u.authenticated?(password)
-    end
+    u = User.all.sorted_by(:username) { |query| query.key(username).count(1) }.first
+    u if u && u.username == username && u.authenticated?(password)
   end
   
   def self.encrypt(password, salt)

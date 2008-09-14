@@ -12,7 +12,7 @@
         = comment.author.name || "Anonymous Coward"
         %span.date-time
           = time_lost_in_sensible_words(comment.created_at)
-      = comment.content
+      = comment.content_html
         
         
   - if (@comment && !@comment.errors.blank?) || (@author && !@author.errors.blank?)

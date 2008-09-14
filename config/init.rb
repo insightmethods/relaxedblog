@@ -4,7 +4,7 @@ dependency "merb-builder"
 dependency "merb_relaxdb"
 dependencies "merb-action-args", "merb-assets", "merb-jquery"
 dependency "merb_helpers"
-dependency "merb_coderay_helpers"
+dependency "merb_coderay_textile_scan_cache"
 
 Merb::BootLoader.after_app_loads do
   

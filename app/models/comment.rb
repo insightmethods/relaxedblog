@@ -1,5 +1,5 @@
 class Comment < RelaxDB::Document
-  include MerbCoderayTextile
+  include CodeRayScanAndCache
   property :created_at
   property :updated_at
   
@@ -14,14 +14,7 @@ class Comment < RelaxDB::Document
   belongs_to :author
   belongs_to :page
   
-  before_save :scan_and_cache_content
-  
-  def scan_and_cache_content
-    if @content
-      formatted_code_if_any = refs_syntax_highlighter(@content)
-      self.content_html = textilize_with_code(formatted_code_if_any || @content) 
-    end
-    true
-  end
+  scan_and_cache :content
+  before_save    :do_scan_and_cache
   
 end
