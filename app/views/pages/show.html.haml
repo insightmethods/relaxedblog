@@ -28,4 +28,8 @@
       = text_field :email, :label => 'Email Address'
       = text_field :url, :label => 'Web Address'
     ~ text_area  :content, :label => "Content", :cols => "44", :rows => "10"
+    %p
+      Textile formatting allowed,
+      %a{:href => "#", :onclick=> "javascript:quickTextileReference();"}
+        See quick reference 
     = submit "Save"

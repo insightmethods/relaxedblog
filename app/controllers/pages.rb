@@ -22,7 +22,10 @@ class Pages < Application
   
   def create_comment(id, comment, author)
     @author.set_attributes(author)
-    @comment.set_attributes(comment.merge(:page => @page, :author => @author))
+    @comment.set_attributes(comment.merge(
+      :page => @page, 
+      :author => @author
+    ))
     if @author.save && @comment.save
       session[:author] = @author
       redirect url(:page, :id => @page.id)
