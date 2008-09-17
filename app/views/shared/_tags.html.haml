@@ -1,0 +1,3 @@
+- for tag in all_tags
+  %li
+    = link_to tag['key'], url(:tag, :tag => tag['key']), :class => "tag#{(tag['value'] / tag_scale).to_i}" 

@@ -35,6 +35,10 @@ class Page < RelaxDB::Document
     def find_all
       RelaxDB.retrieve('_view/Page/all_published?startkey=[true]&count=10', nil, nil, nil)      
     end
+    
+    def all_tags
+      RelaxDB.view('Tag', 'all') { |q| q.group(true) }['rows']
+    end
   end
   
   def tags
