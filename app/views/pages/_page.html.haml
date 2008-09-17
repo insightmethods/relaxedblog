@@ -1,12 +1,16 @@
-%p.page-meta
-  = page.created_at.strftime('%B %d,')
-  by 
-  - if page.author
-    = page.author.name
 %h2.page-title
-  = link_to page.title, url(:page, :id => page.id)
+  = link_to page.title, url(:page, :id => page.stamp)
   %small
     = "NOT PUBLISHED" unless page.published
+%p.page-meta 
+  - if page.author
+    = page.author.name
+  ,
+  %i= page.created_at.strftime('%B %d')
+    
 .page-content
   ~ page.content_html
   
+%p.page-meta
+  Tagged in: 
+  = page.tags.split(' ').map { |tag| link_to tag, url(:tag, :tag => tag) }.join(' , ')

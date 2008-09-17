@@ -47,6 +47,12 @@ class Publish < Application
     redirect url(:publish, :action => :all)
   end
   
+  def update_db_views
+    RelaxDB::ViewUploader.upload("db/views/tags.js")
+    RelaxDB::ViewUploader.upload("db/views/pages.js")
+    render "Updated! <a href=\"/admin\">Back</a>"
+  end
+  
   private
     def setup
       @page = RelaxDB.load(params[:id])

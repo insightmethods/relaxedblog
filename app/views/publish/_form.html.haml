@@ -7,6 +7,7 @@
       
   = form_for @page, :action => form_url do
     = text_field :title, :label => "Title"
+    = hidden_field :stamp
     = select  :author_id, :collection => User.all.map { |u| [u.author.id, u.author.name] }, |
               :label => "Author", :selected => current_author.id |
     = text_field :tags, :label => 'Tags <small>(Separated by space)</small>'

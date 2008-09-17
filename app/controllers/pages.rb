@@ -2,11 +2,13 @@ class Pages < Application
   before :setup, :only => [:show, :preview, :create_comment]
   before :login_required, :only => [:preview]
   
-  def index(page = nil)
+  def index(tag = nil)
     provides :html, :atom
-    @pages = Page.all.sorted_by(:created_at).reverse.select do |page| 
-      !!page.published 
-    end
+    @pages =  if tag.blank?
+                Page.find_all
+              else
+                Page.find_all_by_tag(tag)
+              end
     render 
   end
   
@@ -36,7 +38,8 @@ class Pages < Application
   
   private
     def setup
-      @page = RelaxDB.load(params[:id])
+      @page = RelaxDB.load(params[:id]) rescue Page.find_by_stamp(params[:id])
+      raise BadRequest unless @page
       @comment = Comment.new
       @comments = []
       @author =  session[:author] || Author.new
