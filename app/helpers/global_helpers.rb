@@ -21,5 +21,12 @@ module Merb
       session[:flash][type] = notice
     end
     
+    def all_tags
+      @tags ||= Page.all_tags
+    end
+    
+    def tag_scale
+      @tag_scale ||= (all_tags).max { |t1, t2| t1['value'] <=> t2['value'] }['value'] / 10.0
+    end
   end
 end
