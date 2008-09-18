@@ -1,6 +1,6 @@
 function Page-all_published-map(doc) {
-  if(doc.class == "Page") {
-    emit([(!!doc.published), (doc.created_at||{})], doc);
+  if(doc.class == "Page" && !!doc.published) {
+    emit((doc.created_at||{}), doc);
   }
 }
 

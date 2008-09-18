@@ -29,11 +29,15 @@ class Page < RelaxDB::Document
     end
     
     def find_all_by_tag(tag)
-      RelaxDB.retrieve("_view/Page/all_tagged_published?key=\"#{tag}\"&count=10", nil, nil, nil)
+      RelaxDB.instantiate(
+        RelaxDB.view('Page', 'all_tagged_published') { |query| query.key(tag).count(10) }
+      )
     end
     
     def find_all
-      RelaxDB.retrieve('_view/Page/all_published?startkey=[true]&count=10', nil, nil, nil)      
+      RelaxDB.instantiate(
+        RelaxDB.view('Page', 'all_published') { |query| query.count(10) }
+      )
     end
   end
   
