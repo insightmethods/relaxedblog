@@ -4,3 +4,4 @@ public/stylesheets/master.css
 public/stylesheets/admin.css
 log/*.log
 log/*.pid
+public/stylesheets/print.css

@@ -10,7 +10,7 @@ class Sessions < Application
     if logged_in?
       redirect url(:publish, :action => "all")
     elsif username && password
-      flash(:error, "Email and password provided do not match")
+      flash(:error, "Username and password provided do not match")
       render :new
     else
       render :new

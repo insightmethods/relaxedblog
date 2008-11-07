@@ -7,8 +7,9 @@
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
     = css_include_tag 'master.css'
     = css_include_tag 'coderay.css'
+    = css_include_tag 'print.css', :media => 'print'
     = jquery
-    %link{:rel=>"alternate", :type=>"application/rss+xml", :title=>"RSS", :href=>"#{url(:pages, :format => 'atom')}"}
+
   %body
     #page-wrap
       #inside
